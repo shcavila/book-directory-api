@@ -15,7 +15,7 @@ This project is a NestJS application that demonstrates how to use MongoDB as the
 
    ```bash
    git clone https://github.com/scavila/book-directory-api.git
-   cd nestjs-graphql-mongo
+   cd book-directory-api
 
 
    ## Install dependencies:
