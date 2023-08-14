@@ -1,0 +1,62 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Auth {
+  access_token: String!
+}
+
+type BookFields {
+  author: String!
+  id: String!
+  title: String!
+}
+
+input CreateBookInput {
+  author: String!
+  title: String!
+}
+
+type Mutation {
+  createBook(createBookInput: CreateBookInput!): BookFields!
+  deleteAll: BookFields!
+  deleteBook(id: ID!): BookFields!
+  updateBook(updateBookInput: UpdateBookInput!): BookFields!
+}
+
+type Query {
+  auth(email: String!, password: String!): Auth!
+  book(id: ID!): BookFields!
+  books: [BookFields!]!
+  users(search: UserFilter): [UsersResponse!]!
+}
+
+input UpdateBookInput {
+  author: String!
+  id: String!
+  title: String!
+}
+
+type UserFields {
+  email: String!
+  first_name: String!
+  id: String!
+  last_name: String!
+  password: String!
+}
+
+input UserFilter {
+  filter: UserFilterInput
+}
+
+input UserFilterInput {
+  email: String
+  first_name: String
+  last_name: String
+  password: String
+}
+
+type UsersResponse {
+  data: [UserFields!]!
+  message: String!
+}
