@@ -14,7 +14,7 @@ This project is a NestJS application that demonstrates how to use MongoDB as the
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/scavila/book-directory-api.git
+   git clone https://github.com/shcavila/book-directory-api.git
    cd book-directory-api
 
 
