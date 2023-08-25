@@ -1,11 +1,17 @@
-import { InputType, Field } from '@nestjs/graphql';
+import { InputType, Field, Int, ID } from '@nestjs/graphql';
 
 @InputType()
 export class CreateBookInput {
-  id: string;
   @Field()
   title: string;
-
-  @Field()
-  author: string;
+  @Field(() => Int)
+  year: number;
+  @Field(() => Int)
+  pages: number;
+  @Field(() => ID, { nullable: true })
+  genreId: string;
+  @Field(() => ID, { nullable: true })
+  authorId: string;
+  @Field({ nullable: true })
+  imageLink: string;
 }

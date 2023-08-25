@@ -10,6 +10,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 
+import { GenreModule } from './genre/genre.module';
+import { AuthorModule } from './author/author.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -36,6 +39,8 @@ import { AuthModule } from './auth/auth.module';
     BooksModule,
     UserModule,
     AuthModule,
+    GenreModule,
+    AuthorModule,
   ],
   controllers: [AppController],
   providers: [AppService],

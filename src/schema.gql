@@ -6,35 +6,95 @@ type Auth {
   access_token: String!
 }
 
-type BookFields {
-  author: String!
-  id: String!
+type AuthorResponse {
+  first_name: String!
+  id: ID!
+  last_name: String!
+  middle_name: String!
+}
+
+type BookResponse {
+  author: AuthorResponse!
+  authorId: ID
+  genre: GenreResponse!
+  genreId: ID
+  id: ID!
+  imageLink: String
+  pages: Int!
   title: String!
+  year: Int!
+}
+
+input CreateAuthorInput {
+  first_name: String!
+  last_name: String!
+  middle_name: String
 }
 
 input CreateBookInput {
-  author: String!
+  authorId: ID
+  genreId: ID
+  imageLink: String
+  pages: Int!
   title: String!
+  year: Int!
+}
+
+input CreateGenreInput {
+  description: String!
+  name: String!
+}
+
+type GenreResponse {
+  description: String!
+  id: ID!
+  name: String!
 }
 
 type Mutation {
-  createBook(createBookInput: CreateBookInput!): BookFields!
-  deleteAll: BookFields!
-  deleteBook(id: ID!): BookFields!
-  updateBook(updateBookInput: UpdateBookInput!): BookFields!
+  createAuthor(createAuthorInput: CreateAuthorInput!): AuthorResponse!
+  createBook(createBookInput: CreateBookInput!): BookResponse!
+  createGenre(createGenreInput: CreateGenreInput!): GenreResponse!
+  deleteAllAuthor: Int!
+  deleteAllBook: Int!
+  deleteAuthor(id: ID!): AuthorResponse!
+  deleteBook(id: ID!): BookResponse!
+  removeGenre(id: ID!): GenreResponse!
+  updateAuthor(updateAuthorInput: UpdateAuthorInput!): AuthorResponse!
+  updateBook(updateBookInput: UpdateBookInput!): BookResponse!
+  updateGenre(updateGenreInput: UpdateGenreInput!): GenreResponse!
 }
 
 type Query {
   auth(email: String!, password: String!): Auth!
-  book(id: ID!): BookFields!
-  books: [BookFields!]!
+  author(id: ID!): AuthorResponse!
+  book(id: ID!): BookResponse!
+  books: [BookResponse!]!
+  genre(id: Int!): GenreResponse!
   users(search: UserFilter): [UsersResponse!]!
 }
 
+input UpdateAuthorInput {
+  first_name: String
+  id: ID!
+  last_name: String
+  middle_name: String
+}
+
 input UpdateBookInput {
-  author: String!
-  id: String!
-  title: String!
+  authorId: ID
+  genreId: ID
+  id: ID!
+  imageLink: String
+  pages: Int
+  title: String
+  year: Int
+}
+
+input UpdateGenreInput {
+  description: String
+  id: ID!
+  name: String
 }
 
 type UserFields {
